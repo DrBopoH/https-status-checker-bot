@@ -9,18 +9,19 @@
 <div align="center">
 	<h1><samp>[ <span style="color: #00987a;">UNIT_IDENTIFICATION: UPTIME-WORKER</span> ]</samp></h1>
 	<p><samp><b style="color: #c8c2b8;">SYS_MONITOR</b> // Smart, zero-cost server monitoring and alert system.</samp></p>
+	<p><samp><a href="https://server-status-checker.lecrowz666.workers.dev/" style="color: #98d609; text-decoration: none;"><b>[ 🟢 VIEW LIVE DASHBOARD in your BROWSER ]</b></a></samp></p>
 </div>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="50%" valign="top">
+		<td width="30%" valign="top">
 			<h3><samp style="color: #c8c2b8;">[ CORE_ENGINE ]</samp></h3>
 			<div style="border-left: 2px solid #00987a; padding-left: 15px; background: #0f1714; padding-top: 10px; padding-bottom: 10px; border-radius: 0 4px 4px 0;">
 				<img src="https://img.shields.io/badge/Cloudflare-Workers-F38020?style=flat-square&logo=cloudflare&logoColor=white" alt="Cloudflare Workers" />
 				<img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=white" alt="JavaScript" />
 			</div>
 		</td>
-		<td width="50%" valign="top">
+		<td width="30%" valign="top">
 			<h3><samp style="color: #c8c2b8;">[ COM_CHANNELS ]</samp></h3>
 			<div style="border-left: 1px solid #2e3650; padding-left: 15px; padding-top: 10px; padding-bottom: 10px; border-radius: 0 4px 4px 0;">
 				<samp style="font-size: 13px; color: #c8c2b8;">
@@ -35,14 +36,15 @@
 <br>
 
 <div align="left">
-    <h2><samp style="color: #00987a;">> system_features...</samp></h2>
+	<h2><samp style="color: #00987a;">> system_features...</samp></h2>
 </div>
 <ul style="color: #c8c2b8;">
-    <li><samp><b style="color: #00987a;">[ZERO_COST]:</b> Runs entirely on Cloudflare's free tier (handles up to 100,000 background checks per day).</samp></li>
-    <li><samp><b style="color: #00987a;">[MULTI_TARGET]:</b> Simultaneously monitors an array of target URLs in parallel, ensuring high-speed concurrent checks.</samp></li>
-    <li><samp><b style="color: #00987a;">[SMART_MEMORY]:</b> Utilizes Cloudflare KV to track 3 states (UP, DOWN, DEGRADED). Prevents alert spam by notifying only on state transitions (e.g., total crash, latency spikes, or recovery).</samp></li>
-    <li><samp><b style="color: #00987a;">[CRON_REPORTS]:</b> Configurable daemon interval (e.g., 8 hours) to silently broadcast an "All Systems Go" routine check.</samp></li>
-    <li><samp><b style="color: #00987a;">[MULTI_THREAD]:</b> Simultaneously dispatches payloads to Discord webhooks and multiple Telegram chat IDs.</samp></li>
+	<li><samp><b style="color: #00987a;">[ZERO_COST]:</b> Runs entirely on Cloudflare's free tier (handles up to 100,000 background checks per day).</samp></li>
+	<li><samp><b style="color: #00987a;">[MULTI_TARGET]:</b> Simultaneously monitors an array of target URLs in parallel, ensuring high-speed concurrent checks.</samp></li>
+	<li><samp><b style="color: #00987a;">[SMART_MEMORY]:</b> Utilizes Cloudflare KV to track 3 states (UP, DOWN, DEGRADED). Prevents alert spam by notifying only on state transitions (e.g., total crash, latency spikes, or recovery).</samp></li>
+	<li><samp><b style="color: #00987a;">[LIVE_DASHBOARD]:</b> Built-in minimal web UI for real-time status monitoring. Triggered via HTTP request without hitting messenger API limits.</samp></li>
+	<li><samp><b style="color: #00987a;">[CRON_REPORTS]:</b> Configurable daemon interval (e.g., 8 hours) to silently broadcast an "All Systems Go" routine check.</samp></li>
+	<li><samp><b style="color: #00987a;">[MULTI_THREAD]:</b> Simultaneously dispatches payloads to Discord webhooks and multiple Telegram chat IDs.</samp></li>
 </ul>
 <br>
 
@@ -82,9 +84,13 @@
 		<td style="padding: 10px; vertical-align: top;"><samp><b style="color: #98d609;">04. INJECT_CODE</b></samp></td>
 		<td style="padding: 10px;"><samp>Trigger <b>Edit code</b> protocol (top right). Purge default template. Inject <code>src/worker.js</code>. Populate top-level variables (Tokens, IDs). Execute Deploy.</samp></td>
 	</tr>
-	<tr>
+	<tr style="border-bottom: 1px solid #2e3650;">
 		<td style="padding: 10px; vertical-align: top;"><samp><b style="color: #98d609;">05. CRON_DAEMON</b></samp></td>
 		<td style="padding: 10px;"><samp>Access Worker <b>Settings</b> ➜ <b>Triggers</b> ➜ <b>Cron Triggers</b>. Define loop interval (e.g., <code>*/5 * * * *</code> for a 5-minute scan cycle) and commit changes.</samp></td>
+	</tr>
+	<tr>
+		<td style="padding: 10px; vertical-align: top;"><samp><b style="color: #98d609;">06. UI_ACCESS</b></samp></td>
+		<td style="padding: 10px;"><samp>Navigate to your Worker's deployed <code>*.workers.dev</code> route to access the real-time Status Dashboard.</samp></td>
 	</tr>
 </table>
 

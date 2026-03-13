@@ -1,0 +1,16 @@
+name = "server-status-checker"
+main = "source/worker.js"
+compatibility_date = "2026-03-13"
+
+[[kv_namespaces]]
+binding = "UPTIME_KV"
+id = "ec9eb0db5c5c4a38a6dc0653226198d3"
+
+[vars]
+MAX_PING_MS = "1000"
+ALIVE_INTERVAL_HOURS = "8"
+
+TARGET_URLS = "https://archlinux.org, https://example.com"
+DISCORD_WEBHOOK = "token"
+TG_BOT_TOKEN = "token"
+TG_CHAT_UIDS = "1234544, -100998932039, 998932039:5"
