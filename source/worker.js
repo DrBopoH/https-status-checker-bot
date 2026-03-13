@@ -23,13 +23,20 @@ export default {
 };
 
 async function runDiagnostics(env, isCronMode) {
-	const targetUrls = env.TARGET_URLS ? JSON.parse(env.TARGET_URLS) : [];
 	const maxPingMs = env.MAX_PING_MS ? parseInt(env.MAX_PING_MS, 10) : 1000;
 	const aliveIntervalHours = env.ALIVE_INTERVAL_HOURS ? parseInt(env.ALIVE_INTERVAL_HOURS, 10) : 8;
 
-	const discordWebhook = env.DISCORD_WEBHOOK || ""; 
-	const tgBotToken = env.TG_BOT_TOKEN || ""; 
-	const tgChatUids = env.TG_CHAT_UIDS ? env.TG_CHAT_UIDS.split(',').map(id => id.trim()) : [];
+	const serviceData = env.SERVICE_X_DATA || {};
+
+	const targetUrls = serviceData.TARGET_URLS 
+		? serviceData.TARGET_URLS.split(',').map(url => url.trim()) 
+		: [];
+
+	const discordWebhook = serviceData.DISCORD_WEBHOOK || ""; 
+	const tgBotToken = serviceData.TG_BOT_TOKEN || ""; 
+	const tgChatUids = serviceData.TG_CHAT_UIDS 
+		? serviceData.TG_CHAT_UIDS.split(',').map(id => id.trim()) 
+		: [];
 
 	const results = [];
 	const checkPromises = targetUrls.map(async (url) => {
