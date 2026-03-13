@@ -26,7 +26,16 @@ async function runDiagnostics(env, isCronMode) {
 	const maxPingMs = env.MAX_PING_MS ? parseInt(env.MAX_PING_MS, 10) : 1000;
 	const aliveIntervalHours = env.ALIVE_INTERVAL_HOURS ? parseInt(env.ALIVE_INTERVAL_HOURS, 10) : 8;
 
-	const serviceData = env.SERVICE_X_DATA || {};
+	let serviceData = {};
+	try {
+		if (env.SERVICE_X_DATA) {
+			serviceData = typeof env.SERVICE_X_DATA === 'string' 
+				? JSON.parse(env.SERVICE_X_DATA) 
+				: env.SERVICE_X_DATA;
+		}
+	} catch (e) {
+		console.error("Error parsing SERVICE_X_DATA:", e);
+	}
 
 	const targetUrls = serviceData.TARGET_URLS 
 		? serviceData.TARGET_URLS.split(',').map(url => url.trim()) 
