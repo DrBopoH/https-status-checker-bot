@@ -35,15 +35,15 @@
 <br>
 
 <div align="left">
-	<h2><samp style="color: #00987a;">> system_features...</samp></h2>
+    <h2><samp style="color: #00987a;">> system_features...</samp></h2>
 </div>
 <ul style="color: #c8c2b8;">
-	<li><samp><b style="color: #00987a;">[ZERO_COST]:</b> Runs entirely on Cloudflare's free tier (handles up to 100,000 background checks per day).</samp></li>
-	<li><samp><b style="color: #00987a;">[SMART_MEMORY]:</b> Utilizes Cloudflare KV storage to track states. Sends exactly <i>one</i> alert on crash, and <i>one</i> upon recovery. Zero notification spam.</samp></li>
-	<li><samp><b style="color: #00987a;">[CRON_REPORTS]:</b> Configurable daemon interval (e.g., 8 hours) to silently broadcast an "All Systems Go" routine check.</samp></li>
-	<li><samp><b style="color: #00987a;">[MULTI_THREAD]:</b> Simultaneously dispatches payloads to Discord webhooks and multiple Telegram chat IDs.</samp></li>
+    <li><samp><b style="color: #00987a;">[ZERO_COST]:</b> Runs entirely on Cloudflare's free tier (handles up to 100,000 background checks per day).</samp></li>
+    <li><samp><b style="color: #00987a;">[MULTI_TARGET]:</b> Simultaneously monitors an array of target URLs in parallel, ensuring high-speed concurrent checks.</samp></li>
+    <li><samp><b style="color: #00987a;">[SMART_MEMORY]:</b> Utilizes Cloudflare KV to track 3 states (UP, DOWN, DEGRADED). Prevents alert spam by notifying only on state transitions (e.g., total crash, latency spikes, or recovery).</samp></li>
+    <li><samp><b style="color: #00987a;">[CRON_REPORTS]:</b> Configurable daemon interval (e.g., 8 hours) to silently broadcast an "All Systems Go" routine check.</samp></li>
+    <li><samp><b style="color: #00987a;">[MULTI_THREAD]:</b> Simultaneously dispatches payloads to Discord webhooks and multiple Telegram chat IDs.</samp></li>
 </ul>
-
 <br>
 
 <div align="left">
