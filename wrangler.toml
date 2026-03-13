@@ -6,6 +6,11 @@ compatibility_date = "2026-03-13"
 binding = "UPTIME_KV"
 id = "ec9eb0db5c5c4a38a6dc0653226198d3"
 
+[observability]
+[observability.logs]
+enabled = true
+invocation_logs = true
+
 [vars]
 MAX_PING_MS = "1000"
 ALIVE_INTERVAL_HOURS = "8"
