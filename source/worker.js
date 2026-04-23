@@ -23,6 +23,7 @@ export default {
 };
 
 async function runDiagnostics(env, isCronMode) {
+	const requireHtml = Boolean(env.REQUIRE_HTML);
 	const maxPingMs = env.MAX_PING_MS ? parseInt(env.MAX_PING_MS, 10) : 1000;
 	const aliveIntervalHours = env.ALIVE_INTERVAL_HOURS ? parseInt(env.ALIVE_INTERVAL_HOURS, 10) : 8;
 
@@ -60,10 +61,16 @@ async function runDiagnostics(env, isCronMode) {
 				headers: { 'User-Agent': 'UptimeBot-CF-Worker/2.0' }
 			});
 			latency = Date.now() - startTime;
+
+			const contentType = response.headers.get('Content-Type') || '';
+			const isHtml = contentType.includes('text/html');
 			
 			if (!response.ok && response.status !== 404) {
 				currentStatus = "DOWN";
 				statusText = `HTTP error: ${response.status}`;
+			} else if (requireHtml && !isHtml) {
+				currentStatus = "DOWN";
+				statusText = `Not HTML (got: ${contentType || 'none'})`;
 			} else if (latency > maxPingMs) {
 				currentStatus = "DEGRADED";
 				statusText = `High ping (>${maxPingMs}ms)`;
