@@ -61,6 +61,8 @@ async function runDiagnostics(env, isCronMode) {
 			});
 			latency = Date.now() - startTime;
 
+			const bodyText = await response.text();
+
 			const ngrokErrorPatterns = [
 				'ERR_NGROK_',
 				'ngrok.com/static/css/error',
