@@ -62,29 +62,29 @@ async function runDiagnostics(env, isCronMode) {
 			latency = Date.now() - startTime;
 
 			const ngrokErrorPatterns = [
-			    'ERR_NGROK_',
-			    'ngrok.com/static/css/error',
-			    'ngrok.com/static/js/error',
-			    'x-ngrok-error-code',
+				'ERR_NGROK_',
+				'ngrok.com/static/css/error',
+				'ngrok.com/static/js/error',
+				'x-ngrok-error-code',
 			];
 			const isNgrokError = ngrokErrorPatterns.some(pattern => 
-			    bodyText.includes(pattern) || 
-			    (response.headers.get('x-ngrok-error-code') || '').length > 0
+				bodyText.includes(pattern) || 
+				(response.headers.get('x-ngrok-error-code') || '').length > 0
 			);
 
 			if (!response.ok && response.status !== 404) {
-			    currentStatus = "DOWN";
-			    statusText = `HTTP error: ${response.status}`;
+				currentStatus = "DOWN";
+				statusText = `HTTP error: ${response.status}`;
 			} else if (isNgrokError) {
-			    const match = bodyText.match(/ERR_NGROK_\d+/);
-			    currentStatus = "DOWN";
-			    statusText = `Server offline (${match ? match[0] : 'ERR_NGROK'})`;
+				const match = bodyText.match(/ERR_NGROK_\d+/);
+				currentStatus = "DOWN";
+				statusText = `Server offline (${match ? match[0] : 'ERR_NGROK'})`;
 			} else if (latency > maxPingMs) {
-			    currentStatus = "DEGRADED";
-			    statusText = `High ping (>${maxPingMs}ms)`;
+				currentStatus = "DEGRADED";
+				statusText = `High ping (>${maxPingMs}ms)`;
 			} else {
-			    currentStatus = "UP";
-			    statusText = "OK";
+				currentStatus = "UP";
+				statusText = "OK";
 			}
 		} catch (error) {
 			currentStatus = "DOWN";
