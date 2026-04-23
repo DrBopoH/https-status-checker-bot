@@ -13,7 +13,6 @@ invocation_logs = true
 
 [vars]
 MAX_PING_MS = "1000"
-"REQUIRE_HTML" = true
 ALIVE_INTERVAL_HOURS = "8"
 
 	[vars.SERVICE_X_DATA]
